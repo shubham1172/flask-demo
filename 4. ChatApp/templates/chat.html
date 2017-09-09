@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title> Welcome, {{username}} </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles.css') }}">
+		<script src="{{ url_for('static', filename = 'jquery.js') }}"></script>
+	</head>
+	<body>
+		<div class='container'>
+			<div id="messages"></div>
+			<div>
+				<input type="text" id="message" placeholder="message">
+				<input type="button" id="submit" value="send!">
+			</div>
+		</div>
+		<script>
+		$('#submit').click(function(){
+			$.ajax({
+				url: "/set-data",
+				type: "post",
+				data: {message: $('#message').val()},
+				success: function(response){
+					//done!
+					$('#message').val('');
+				},
+				error: function(xhr){
+					alert('Error!');
+				}
+			});
+		});
+		var getMessage = setInterval(function(){
+			$.ajax({
+				url: "/messages",
+				type: "get",
+				success: function(response) {
+					$("#messages").html(response);
+				},
+				error: function(xhr) {
+					alert('Error!');
+					clearInterval(getMessage);
+				}
+			});
+		}, 500);
+		</script>
+	</body>
+</html>
