@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title> Welcome, {{username}} </title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'styles.css') }}">
+	</head>
+	<body>
+		<h3> Hey {{username}}, this is a template! </h3>
+		Let's count from 1 to 10: <br/>
+		{% for i in range(1,11) %}
+		{{i}}<br/>
+		{% endfor %}
+		<div class = "template-content">
+			This is some content in template file!
+		</div>
+	</body>
+</html>

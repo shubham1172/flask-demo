@@ -1,0 +1,9 @@
+.content{
+	color: red;
+	margin-left: 20px;
+}
+.template-content{
+	font-size: 150%;
+	color: blue;
+	font-family:monospace;
+}
