@@ -1,0 +1,12 @@
+<html>
+	<head>
+		<title> Welcome, {{username}} </title>
+	</head>
+	<body>
+		<h3> Hey {{username}}, this is a template! </h3>
+		Let's count from 1 to 10: <br/>
+		{% for i in range(1,11) %}
+		{{i}}<br/>
+		{% endfor %}
+	</body>
+</html>
